@@ -2,14 +2,20 @@ package page.contact;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class NewContactCreator {
-    SelenideElement chek = $x("//div[text()='Основное']/following-sibling::div/button");
+    SelenideElement editButtonContact = $x("//div[text()='Основное']/following-sibling::div/button");
 
-
-    public void check(){
-        chek.shouldBe(Condition.enabled);
+    @Step("Проверка наличия кнопки 'Редактировать', как атрибута созданного контакта")
+    public boolean checkCreateContact() {
+        try {
+            editButtonContact.shouldBe(Condition.enabled);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

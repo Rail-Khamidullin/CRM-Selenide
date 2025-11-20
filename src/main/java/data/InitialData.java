@@ -1,7 +1,8 @@
+package data;
 
 public class InitialData {
     // URL тестируемого приложения ПРЕПРОД
-    public static final String AUTH_PAGE_URL = "https://172.20.206.107/";
+    public static final String AUTH_PAGE_URL = "https://preprod-crm.sbercity.ru/";
 
     // персональные данные для авторизации пользователя (админ)
     public static final String REGISTRATION_EMAIL = "admin@admin.ru";

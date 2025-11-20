@@ -4,11 +4,10 @@ import api.UserJSON;
 import api.entityRequest.FilterRequest;
 import api.entityRequest.entityRequest;
 import api.entityRequest.SortOption;
+import data.InitialData;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
 import java.util.Collections;
-
 import static io.restassured.RestAssured.given;
 
 public class SupportREST {
@@ -23,6 +22,17 @@ public class SupportREST {
     public static final String INTEREST_LIST_API = "/api/v1/interest/list";
     // Endpoint удаления Лида
     public static final String DELETE_INTEREST_API = "/api/v1/interest";
+    // Endpoint удаления Контакта
+    public static final String DELETE_CONTACT_API = "/api/v1/contact";
+    // Endpoint получения списка Контактов
+    public static final String CONTACT_LIST_API = "/api/v1/contact/list";
+
+    @Step("Получение токена под пользователем admin")
+    public String adminToken() {
+        return getToken(new UserJSON(InitialData.REGISTRATION_EMAIL,
+                InitialData.REGISTRATION_PASSWORD,
+                InitialData.REMEMBER_ME));
+    }
 
     @Step("Получение токена авторизации")
     public String getToken(UserJSON creds) {

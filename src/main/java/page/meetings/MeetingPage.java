@@ -12,6 +12,10 @@ import static locators.Locators.ID_ON_TABLE;
 import static locators.Locators.NAME_ON_TABLE;
 
 public class MeetingPage extends BasePage {
+
+    // локатор наименования записи в таблице
+    private static final SelenideElement NAME_ON_TABLE_MEETINGS = $x(".//tr[@class = 'clickable-JNIQAI']//td[@data-cell-name='topic']/div");
+
     // кнопка перехода к странице создания дела
     private static final SelenideElement CREATE_MEETING_BUTTON = $(byText("Создать Дело"));
 
@@ -22,7 +26,7 @@ public class MeetingPage extends BasePage {
 
     @Step("Достаём текст названия созданного дела")
     public String getNameMeeting() {
-        return NAME_ON_TABLE.shouldBe(visible).getText();
+        return NAME_ON_TABLE_MEETINGS.shouldBe(visible).getText();
     }
 
     @Step("Достаём id дела в таблице")

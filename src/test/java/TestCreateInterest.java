@@ -1,7 +1,8 @@
-import api.UserJSON;
+
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import page.interests.InterestsPage;
@@ -14,6 +15,7 @@ import static rest.SupportREST.DELETE_INTEREST_API;
 import static rest.SupportREST.INTEREST_LIST_API;
 import static web.MainPage.INTERESTS;
 
+// создание Лида
 @ExtendWith(AllureJunit5.class)
 public class TestCreateInterest extends BaseSelenidePage {
 
@@ -25,13 +27,11 @@ public class TestCreateInterest extends BaseSelenidePage {
     private Integer id;
 
     @Test
+    @DisplayName("Создание Лида")
     public void testInterestCreate() {
 
         // получение токена
-        token = supportREST.getToken(new UserJSON(InitialData.REGISTRATION_EMAIL,
-                InitialData.REGISTRATION_PASSWORD,
-                InitialData.REMEMBER_ME));
-
+        token = supportREST.adminToken();
         // создание экземпляра класса с главной страницей
         MainPage mainPage = new MainPage();
         // открытие таблицы с Лидами
