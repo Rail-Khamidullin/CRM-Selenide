@@ -1,7 +1,8 @@
-import api.UserJSON;
+
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import page.meetings.MeetingPage;
@@ -25,12 +26,10 @@ public class TestCreateMeeting extends BaseSelenidePage {
     private int id;
 
     @Test
+    @DisplayName("Создание Дела")
     public void meetingCreate() {
         // получение токена
-        token = supportREST.getToken(new UserJSON(InitialData.REGISTRATION_EMAIL,
-                InitialData.REGISTRATION_PASSWORD,
-                InitialData.REMEMBER_ME));
-
+        token = supportREST.adminToken();
         // создание экземпляра класса с главной страницей
         MainPage mainPage = new MainPage();
         // открытие таблицы с делами

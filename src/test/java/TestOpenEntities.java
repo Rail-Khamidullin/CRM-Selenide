@@ -2,6 +2,7 @@ import browser.ConfigurationBrowser;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import constants.Constants;
+import data.InitialData;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,14 +15,13 @@ import page.notifications.NotificationsPage;
 import page.payments.PaymentsPage;
 import web.AutorizationPage;
 import web.MainPage;
-
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static web.MainPage.*;
 
+// открытие сущностей на просмотр
 public class TestOpenEntities {
 
     // создание экземпляра класса с главной страницей
@@ -60,7 +60,7 @@ public class TestOpenEntities {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Проверка открытия сущности: {2}")
     @MethodSource("entitiesData")
     public void testOpenEntities(Class<? extends BasePage> pageClass,  // класс сущности
                                  SelenideElement nameEntity,           // локатор сущности
@@ -74,15 +74,15 @@ public class TestOpenEntities {
 
         assertAll("Сущности открываются на просмотр и соответствуют ТЗ",
                 () -> assertEquals(entityTitle, openEntity.getTitle(entityTitle),
-                        "Заголовок выбранной сущности = '"+ entityTitle +"'"),
+                        "Заголовок выбранной сущности = '" + entityTitle + "'"),
                 () -> assertEquals(actionButton, openEntity.getCreateButtonText(actionButton),
-                        "Должна отображаться кнопка действия: '"+ actionButton +"'"),
+                        "Должна отображаться кнопка действия: '" + actionButton + "'"),
                 () -> assertEquals(tableVisible, openEntity.tableIsVisible(),
-                        "Должно быть отображение таблицы на странице = '"+ tableVisible +"'"),
+                        "Должно быть отображение таблицы на странице = '" + tableVisible + "'"),
                 () -> assertEquals(Constants.TEXT_COLOR_ENTITY, openEntity.getColorTextEntity(nameEntity),
-                        "Цвет кнопки выбранной сущности должен быть = '"+ nameEntity +"'"),
+                        "Цвет кнопки выбранной сущности должен быть = '" + nameEntity + "'"),
                 () -> assertEquals(blocks, openEntity.tabsIsVisible(entityTitle),
-                        "Открытие блоков в сущности: '"+ blocks +"'")
+                        "Открытие блоков в сущности: '" + blocks + "'")
         );
     }
 

@@ -1,10 +1,10 @@
 
 import browser.ConfigurationBrowser;
+import data.InitialData;
 import org.junit.jupiter.api.BeforeEach;
 import web.AutorizationPage;
 
 abstract public class BaseSelenidePage {
-
     /**
      * Инициализация selenide с настройками
      */
@@ -24,7 +24,5 @@ abstract public class BaseSelenidePage {
      * Выполнение метода перед каждым запуском тестов
      */
     @BeforeEach
-    public void init() {
-        setUp();
-    }
+    public void init() {setUp();}
 }

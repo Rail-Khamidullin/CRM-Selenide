@@ -17,7 +17,7 @@ public class ContactsPage extends BasePage {
     // кнопка перехода к странице создания контакта
     private static final SelenideElement CREATE_CONTACT_BUTTON = $(byText("Создать Контакт"));
 
-    public CreateNewContact clickButtonCreateNewContact(){
+    public CreateNewContact clickButtonCreateNewContact() {
         buttonCreateNewContact.shouldBe(Condition.enabled).click();
         return new CreateNewContact();
     }
